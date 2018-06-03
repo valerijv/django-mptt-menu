@@ -1,27 +1,31 @@
-{% load mptt_tags %}
+{% extends 'menu/layout.html' %}
 
-{% for category, structure in categories|tree_info %}
-    {% if structure.new_level %}<ul><li class="category">{% else %}</li><li class="category">{% endif %}
-        {% with products=category.products.all %}
-            {{ category.name }} ({{ products|length }})
-            {% if products %}
-                <ul>
-                    {% for product in products %}
-                        <li class="product">{{ product.name }} (${{product.price }})</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
-    {% for level in structure.closed_levels %}</li></ul>{% endfor %}
-{% endfor %}
+{% block content %}
+    {% load mptt_tags %}
 
-<style>
-    .category {
-        color: blue;
-        font-weight: bold;
-    }
-    .product {
-        color: green;
-        font-weight: normal;
-    }
-</style>
+    {% for category, structure in categories|tree_info %}
+        {% if structure.new_level %}<ul><li class="category">{% else %}</li><li class="category">{% endif %}
+            {% with products=category.products.all %}
+                {{ category.name }} ({{ products|length }})
+                {% if products %}
+                    <ul>
+                        {% for product in products %}
+                            <li class="product">{{ product.name }} (${{product.price }})</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        {% for level in structure.closed_levels %}</li></ul>{% endfor %}
+    {% endfor %}
+
+    <style>
+        .category {
+            color: blue;
+            font-weight: bold;
+        }
+        .product {
+            color: green;
+            font-weight: normal;
+        }
+    </style>
+{% endblock %}

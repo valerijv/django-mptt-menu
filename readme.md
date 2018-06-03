@@ -20,5 +20,6 @@ admin panel: http://localhost:8000/admin
 ### Results
 * categories: 1364
 * products: 13806
+* load time 10s
 
 ![alt text](results.png)

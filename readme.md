@@ -1,20 +1,23 @@
 ### Instructions
 
+* clone repository
+
 * create virtualenv
 
-`pip install -r path/to/requirements.txt`
+* create .env (use .env.dist as an example)
+
+`pip install -r requirements.txt`
 
 `python manage.py migrate`
 
-`python manage.py generate_data (took 20 seconds)`
-
-create django admin
+`python manage.py generate_data` (took 20 seconds)
 
 `python manage.py createsuperuser`
 
 `python manage.py runserver`
 
 user view: http://localhost:8000/
+
 admin panel: http://localhost:8000/admin
 
 ### Results
